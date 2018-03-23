@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-Han">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrapper-inner">
+<script type="text/html" id="page-index">
+    {{include 'open'}}
+    {{include 'header',$data}}
+    {{include 'section-index',$data}}
+    {{include 'side-nav',$data}}
+    {{include 'contact', $data}}
+    {{include 'footer',$data}}
+</script>
+<script type="text/html" id="page-public">
+	{{include 'header',$data}}
+	{{include 'section-public',$data.public}}
+	{{include 'section-download',$data}}
+    {{include 'contact', $data}}
+    {{include 'footer',$data}}
+</script>
+
+
+<script type="text/html" id="page-invest">
+	{{include 'header',$data}}
+	{{include 'section-invest',$data.invest}}
+	{{include 'section-download',$data}}
+    {{include 'contact', $data}}
+    {{include 'footer',$data}}
+</script>
+
+
+<script type="text/html" id="page-trade">
+	{{include 'header',$data}}
+	{{include 'section-invest',$data.trade}}
+	{{include 'section-download',$data}}
+    {{include 'contact', $data}}
+    {{include 'footer',$data}}
+</script>
+
+<script type="text/html" id="header">
+    <div class="header fixed">
+        <div class="inner">
+            <a href="#home" class="item brand"><span class="icon"></span>{{logo}}</a>
+            <div class="select-wrap" id="lang-select-wrap">
+                <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
+                <select class="lang-select">
+                    <option value="zh-Han">简体中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <nav class="item nav-bar">
+                {{include 'nav',$data}}
+            </nav>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="footer">
+    <section class="footer">
+        <div class="inner">
+            <div class="item">
+                <a href="#home" class="brand"><span class="icon"></span>{{logo}}</a>
+                <p>&copy;DEE 2018. 版权所有</p>
+            </div>
+            <div class="item social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-slack-hash"></i></a>
+            </div>
+            <div class="item">
+                <p class="links"><a href="#">隐私条款</a></p>
+                <p>权益保障承诺书</p>
+            </div>
+        </div>
+    </section>
+    <div class="fix-bar">
+        <a href="#" id="top"><i class="fa fa-arrow-up"></i></a>
+    </div>
+</script>
+<script type="text/html" id="nav">
+    {{each nav items}}
+    <div class="item">
+        <a href="{{items.link}}" class="{{if items.active}}active{{/if}} {{items.link_theme}}" {{if items.topage}} rel="toPage"{{/if}}>{{items.name}}</a> 
+        {{if items.child}}
+        <div class="sub-nav">
+            {{each items.child subs}}
+            <a href="{{subs.link}}" {{if subs.topage}}rel="toPage"{{/if}}>{{subs.name}}</a> 
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+<script type="text/html" id="side-nav">
+    <div class="home-side-nav">
+        {{each nav items}}
+        <a href="{{items.link}}" class="{{if items.active}}active{{/if}}" title="{{items.name}}"></a>
+        {{/each}}
+    </div>
+</script>
+<script type="text/html" id="section-index">
+    {{each index items}}
+    <section class="part {{items.theme}}" id="{{items.id}}">
+        {{if items.id == 'home'}}
+        	{{include 'part-home', items}}
+       	{{else if items.id == 'service'}}
+       		{{include 'part-service', items}}
+       	{{else if items.id == 'progress'}}
+       		{{include 'part-progress', items}}
+       	{{else if items.id == 'team'}}
+       		{{include 'part-team', items}}
+       	{{else if items.id == 'partner'}}
+       		{{include 'part-partner', items}}
+       	{{else if items.id == 'news'}}
+       		{{include 'part-news', items}}
+       	{{else}}
+        <p>{{items.name}}</p>
+        {{/if}}
+    </section>
+    {{/each}}
+</script>
+<script type="text/html" id="part-home">
+    <h2 class="section_title">基于<span>ETH区块链</span>技术的<br>全球不动产通证化服务与交易平台</h2>
+    <div class="img-wrap">
+        <div class="tips">
+        	{{include 'mouse-svg'}}
+            滚动鼠标继续
+        </div>
+        <div class="inner">
+            {{include 'earth-svg'}}
+        </div>
+    </div>
+    {{include 'part-home-bar'}}
+</script>
+<script type="text/html" id="part-home-bar">
+    <div class="home-bar">
+        <div class="ctrl">
+            {{include 'home-bar-icon'}}
+            <i class="icon arrow fas fa-angle-right"></i>
+        </div>
+        <div class="item">
+            <div class="icon com">{{include 'home-bar-icon'}}</div>
+            <p>敬请期待</p>
+        </div>
+        <div class="item">
+            <p>你可以</p>
+            <a href="#">下载白皮书</a>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="part-service">
+    <p class="top-desc">提供行业领先的平台应用让你的交易得心应手</p>
+    <h2 class="section_title">三大主要功能</h2>
+    <div class="service-wrap">
+        <div class="item">
+            <div class="img-wrap"></div>
+            <h3>发行</h3>
+            <p>全新份数字化不动产</p>
+        </div>
+        <div class="item">
+            <div class="img-wrap"></div>
+            <h3>投资</h3>
+            <p>一站式全球不动产配置</p>
+        </div>
+        <div class="item">
+            <div class="img-wrap"></div>
+            <h3>交易</h3>
+            <p>份额化降低全球不动产门槛</p>
+        </div>
+    </div>
+    <a href="#" class="primary-button"><span>了解详情</span></a>
+</script>
+<script type="text/html" id="part-progress">
+    <p class="top-desc">我们在快速成长</p>
+    <h2 class="section_title">发展历程</h2>
+    <!--<div class="inner">
+		 <div class="item">
+			<div class="subject">DEE<br>项目成立</div>
+			<div class="date">2018年3月5日</div>
+			{{include 'progress-cube'}}
+		</div>
+		<div class="item">
+			<div class="subject">DEE<br>项目成立</div>
+			<div class="date">2018年3月5日</div>
+			{{include 'progress-cube'}}
+		</div>
+		<div class="item">
+			<div class="subject">DEE<br>项目成立</div>
+			<div class="date">2018年3月5日</div>
+			{{include 'progress-cube'}}
+		</div>
+		<div class="item">
+			<div class="subject">DEE<br>项目成立</div>
+			<div class="date">2018年3月5日</div>
+			{{include 'progress-cube'}}
+		</div>
+		<div class="item">
+			<div class="subject">DEE<br>项目成立</div>
+			<div class="date">2018年3月5日</div>
+			{{include 'progress-cube'}}
+		</div> 
+	</div>-->
+    <div class="img-wrap">
+        {{include 'progress-svg'}}
+    </div>
+</script>
+<script type="text/html" id="part-team">
+    <p class="top-desc">我们拥有相关领域最专业的人士为你护航</p>
+    <h2 class="section_title">团队成员</h2>
+    <div class="team-list owl-carousel owl-theme">
+        {{each list items}}
+        <div class="item">
+            <div class="img-wrap" style="background-image: url('{{items.img}}');"></div>
+            <h3>{{items.name}}</h3>
+            <p>{{items.job}}</p>
+        </div>
+        {{/each}}
+    </div>
+    <div class="tips">
+        {{include 'team-icon'}} 左右拖动浏览
+    </div>
+</script>
+<script type="text/html" id="part-partner">
+    <p class="top-desc">我们获全球顶尖企业信任</p>
+    <h2 class="section_title">合作伙伴</h2>
+    <h3 class="section_s_title"><span>我们的使命</span>是用新技术推进<br><span>高质量用户体验.</span></h3>
+    <div class="partner-list owl-carousel owl-theme">
+        {{each list items}}
+        <div class="item">
+            <div class="grid-list">
+                {{each items logos}}
+                <div class="item"><img src="{{logos.img}}" alt="{{logos.name}}"></div>
+                {{/each}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+<script type="text/html" id="part-news">
+    <p class="top-desc">我们的最新动态</p>
+    <h2 class="section_title">新闻</h2>
+    <div class="news-list owl-carousel owl-theme">
+        {{each list items}}
+        <div class="item">
+            <div class="img-wrap" style="background-image:url({{items.img}})"></div>
+            <h3>{{items.title}}</h3>
+            <p>{{items.desc}}</p>
+        </div>
+        {{/each}}
+    </div>
+</script>
+<script type="text/html" id="contact">
+    <section class="part {{contact.theme}}" id="{{contact.id}}">
+        <div class="inner">
+            <h2 class="section_title">立刻联系我们，获得更多帮助<br> 或 <a href="#">下载白皮书</a></h2>
+            <p class="top-desc">留下你的 Email 地址，让我们的客服人员联系你</p>
+            <form class="contact-form">
+                <input type="email" name="" placeholder="电子邮箱地址">
+                <button class="second-button">发送</button>
+            </form>
+            <div class="img-wrap">
+                {{include 'contact-bg'}}
+            </div>
+        </div>
+    </section>
+</script>
+
+<script type="text/html" id="section-public">
+
+    <section class="part" id="{{id}}">
+        <div class="inner">
+        	<p class="top-desc">{{desc}}</p>
+            <h2 class="section_title">{{name}}</h2>
+			
+            {{each list items}}
+				<div class="section_row {{items.theme}}">
+					<div class="item img-wrap"><img src="{{items.img}}" alt="{{items.title}}"></div>
+					<div class="item desc-wrap">
+						<h4>{{items.title}}</h4>
+						<p>{{items.desc}}</p>
+					</div>
+				</div>
+            {{/each}}
+        </div>
+    </section>
+
+</script>
+
+<script type="text/html" id="section-invest">
+
+    <section class="part" id="{{id}}">
+        <div class="inner">
+        	<p class="top-desc">{{desc}}</p>
+            <h2 class="section_title">{{name}}</h2>
+			<div class="section_row">
+            {{each list items}}
+				<div class="item">
+					<div class="img-wrap"><img src="{{items.img}}" alt="{{items.title}}"></div>
+					<div class="desc-wrap">
+						<h4>{{items.title}}</h4>
+						<p>{{items.desc}}</p>
+					</div>
+				</div>
+            {{/each}}
+        </div>
+        </div>
+    </section>
+
+</script>
+
+
+<script type="text/html" id="section-download">
+<section class="part download">
+	<a href="#"class="primary-button"><span>下载白皮书</span></a>
+</section>
+</script>
+
+
+<script type="text/html" id="earth-svg">
+    <svg viewBox="694 -694 1420 1420" class="earth">
+        <filter width="151.3%" height="151.3%" id="filter-1" filterUnits="objectBoundingBox" y="-24.0%" x="-25.6%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="20" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="100" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.155825408 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <g id="Page-1">
+            <g id="earth">
+                <g transform="translate(17, 6)">
+                    <g id="backline" transform="translate(791, 54)">
+                        <path id="Path-24" class="st0" d="M886-694l-192,51" />
+                    </g>
+                    <g transform="translate(95, 74)" class="earth_square">
+                        <polygon id="Triangle_1_" class="st2" points="1265,-674 1438,-459 1070,-494 				" />
+                        <polygon id="Triangle-Copy-3_1_" class="st3" points="1438,-459 1544,-42 1131,-164 				" />
+                        <polygon id="Triangle-Copy-7_1_" class="st4" points="1070,-494 1131,-164 806,-238 				" />
+                        <polygon id="Triangle-Copy-16_5_" class="st5" points="1131,-164 1248,192 902,135 				" />
+                        <polygon id="Triangle-Copy-16_4_" class="st6" points="902,135 1192,453 863,370 				" />
+                        <polygon id="Triangle-Copy-16_3_" class="st7" points="863,370 1192,453 1070,479 				" />
+                        <polygon id="Triangle-Copy-15_1_" class="st8" points="806,-238 694,96 694,-251 				" />
+                        <polygon id="Triangle-Copy-12_1_" class="st9" points="854,-516 806,-238 694,-251 				" />
+                        <polygon id="Triangle-Copy-6_7_" class="st7" points="1759,-297 1850,54 1544,-42 				" />
+                        <polygon id="Triangle-Copy-6_6_" class="st10" points="1850,54 1730,388 1561,344.1 				" />
+                        <polygon id="Triangle-Copy-6_5_" class="st11" points="1903,-237 1903,106 1850,54 				" />
+                        <polygon id="Triangle-Copy-6_4_" class="st11" points="1747,-516 1903,-237 1759,-297 				" />
+                        <polygon id="Triangle-Copy-5_3_" class="st12" points="1664,-551 1759,-297 1438,-459 				" />
+                        <polygon id="Triangle-Copy-5_2_" class="st13" points="1664,-551 1748,-515 1481,-673 				" />
+                        <polygon id="Triangle-Copy-2_1_" class="st14" points="1070,-494 1438,-459 1131,-164 				" />
+                        <polygon id="Triangle-Copy-8_1_" class="st2" points="854,-516 1070,-494 806,-237.9 				" />
+                        <polygon id="Triangle-Copy-14_7_" class="st5" points="694,96 806,-238 902,135 				" />
+                        <polygon id="Triangle-Copy-14_6_" class="st15" points="1248,192 1544,-42 1565,345 				" />
+                        <polygon id="Triangle-Copy-14_5_" class="st7" points="1192,453 1565,345 1730,388 				" />
+                        <polygon id="Triangle-Copy-14_4_" class="st16" points="1192,453 1535,479 1730,388 				" />
+                        <polygon id="Triangle-Copy-13_9_" class="st17" points="806,-238 1131,-164 902,135 				" />
+                        <polygon id="Triangle-Copy-13_8_" class="st18" points="694,96 902,135 863,370 				" />
+                        <polygon id="Triangle-Copy-13_7_" class="st3" points="902,135 1248,192 1192,453 				" />
+                        <polygon id="Triangle-Copy-13_6_" class="st19" points="1070,479 1535,479.1 1192,453 				" />
+                        <polygon id="Triangle-Copy-13_5_" class="st16" points="1070,479 1535,479 1256.3,513.8 				" />
+                        <polygon id="Triangle-Copy-10_1_" class="st20" points="1140,-694 1265,-674 854,-516 				" />
+                        <polygon id="Triangle-Copy-11_3_" class="st3" points="1481,-673 1664,-551 1265,-674 				" />
+                        <polygon id="Triangle-Copy-11_2_" class="st21" points="1748,-515 1759,-297 1664,-551 				" />
+                        <polygon id="Triangle-Copy-9_1_" class="st22" points="854,-516 1265,-674 1070,-494 				" />
+                        <polygon id="Triangle-Copy-4_11_" class="st23" points="1438,-459 1759,-297 1544,-42 				" />
+                        <polygon id="Triangle-Copy-4_10_" class="st14" points="1131,-164 1544,-42 1248,192 				" />
+                        <polygon id="Triangle-Copy-4_9_" class="st24" points="1248,192 1565,345 1192,453 				" />
+                        <polygon id="Triangle-Copy-4_8_" class="st25" points="1544,-42 1850,54 1565,345 				" />
+                        <polygon id="Triangle-Copy-4_7_" class="st16" points="1759,-297 1903,-237.2 1850,54 				" />
+                        <polygon id="Triangle-Copy-4_6_" class="st16" points="1850,54 1903,106 1730,388 				" />
+                        <polygon id="Triangle-Copy_3_" class="st14" points="1265,-674 1664,-551 1438,-459 				" />
+                        <polygon id="Triangle-Copy_2_" class="st26" points="1140,-694 1481,-673 1265,-674 				" />
+                    </g>
+                    <g id="outline" transform="translate(4, 11)">
+                        <polyline id="Path-5" class="st0" points="948,-539 1195,-542 861,-286 				" />
+                        <polygon id="Path-6" class="st27" points="1197,-542 1102,-290 862,-286 				" />
+                        <polyline id="Path-7" class="st0" points="1103,-290 1027,-171 862,-150 862,-287 				" />
+                        <polygon id="Path-8" class="st27" points="1196,-543 1503,-536 1330,-670 				" />
+                        <polygon id="Path-9" class="st0" points="949,-539 1331,-671 1119,-649 				" />
+                        <polygon id="Path-10" class="st0" points="1503,-537 1709,-558 1475,-694 				" />
+                        <polyline id="Path-11" class="st0" points="1504,-537 1345,-471 1197,-542 				" />
+                        <path id="Path-12" class="st0" d="M1345-471l-242,181" />
+                        <polyline id="Path-13" class="st0" points="1346,-471 1647,-395 1503,-537 				" />
+                        <polygon id="Path-14" class="st0" points="1648,-395 1709,-558 1841,-432 				" />
+                        <polyline id="Path-15" class="st0" points="1841,-432 1825,-539 1709,-558 				" />
+                        <polygon id="Path-17" class="st27" points="1841,-432 2011,-346 1914,-209 				" />
+                        <polygon id="Path-18" class="st0" points="1648,-394 1914,-209 1666,-199 				" />
+                        <polygon id="Path-19" class="st0" points="1345,-471 1483,-318 1648,-395 				" />
+                        <polygon id="Path-20" class="st0" points="1104,-290 1483,-318 1411,-222 1225,-194 				" />
+                        <path id="Path-22" class="st0" d="M1671-651l38,93" />
+                        <path id="Path-23" class="st0" d="M1331-671l145-23" />
+                        <polyline id="Path-3" class="st0" points="817,-450 861,-286 709,-229 				" />
+                        <path id="Path-4" class="st0" d="M861-286c0,0,29-84,87-252l-131,88" />
+                        <polygon id="Path-2" class="st0" points="709,-230 819,-450 1169,-470 1478,-694 1673,-651 1827,-539 1872,-495 2013,-347 
+					2059,-224 2059,-39 2077,191 1969,392 1827,587 1571,645 1313,696 1028,604 828,430 738,204 694,-25 				" />
+                        <polyline id="Path-21" class="st0" points="694,-24 862,-150 711,-229 				" />
+                        <polygon id="Path-31" class="st0" points="862,-150 837,144 694,-25 				" />
+                        <path id="Path-32" class="st0" d="M837,144l-99,59" />
+                        <polygon id="Path-33" class="st27" points="837,144 828,430 1000,425 				" />
+                        <path id="Path-34" class="st0" d="M1000,425l28,179" />
+                        <polyline id="Path-35" class="st0" points="1000,425 1198,359 985,117 1027,-171 				" />
+                        <polygon id="Path-36" class="st27" points="862,-150 985,117 837,144 				" />
+                        <path id="Path-37" class="st0" d="M985,118l15,307" />
+                        <polyline id="Path-38" class="st0" points="1198,359 1160,646 1000,425 				" />
+                        <polygon id="Path-39" class="st0" points="1198,359 1313,696 1466,494 				" />
+                        <polygon id="Path-41" class="st27" points="1466,494 1701,439 1584.5,641 				" />
+                        <path id="Path-43" class="st0" d="M1837,295c0,0-102-30.7-306-92l-65,291" />
+                        <polygon id="Path-45" class="st27" points="1198,359 1532,202 1272,48 				" />
+                        <polygon id="Path-46" class="st0" points="985,117 1275,49 1027,-171 				" />
+                        <polygon id="Path-47" class="st0" points="1027,-171 1225,-194 1273,48 				" />
+                        <polyline id="Path-48" class="st0" points="1274,46 1411,-222 1584,14 1532,202 				" />
+                        <path id="Path-49" class="st0" d="M1276,47l308-33" />
+                        <polyline id="Path-51" class="st0" points="1584,14 1800,10 1914,-209 				" />
+                        <polygon id="Path-53" class="st27" points="1800,10 1837,294 1584,14 				" />
+                        <polyline id="Path-55" class="st0" points="1980,99 2060,-39 1914,-209 2059,-224 				" />
+                        <path id="Path-57" class="st0" d="M2077,191l-240,104" />
+                        <path id="Path-40" class="st0" d="M1466,494l119,148" />
+                        <polygon id="Path-42" class="st0" points="1828,588 1701,439 1837,295 				" />
+                        <path id="Path-44" class="st0" d="M1702,440l-172-236" />
+                        <polyline id="Path-50" class="st0" points="1585,13 1666,-199 1411,-222 				" />
+                        <path id="Path-52" class="st0" d="M1666-199l134,209" />
+                        <polyline id="Path-54" class="st0" points="1800,10 1980,99 1914,-209 				" />
+                        <polyline id="Path-56" class="st0" points="2077,191 1980,99 1837,295 1974,382 				" />
+                    </g>
+                    <g id="point">
+                        <circle id="Oval-3" class="st28" cx="1334" cy="-659" r="6" />
+                        <circle id="Oval-3_1_" class="st28" cx="1713" cy="-547" r="6" />
+                        <circle id="Oval-3_2_" class="st28" cx="1507" cy="-526" r="6" />
+                        <circle id="Oval-3_3_" class="st28" cx="1487" cy="-307" r="6" />
+                        <circle id="Oval-3-Copy-7" class="st28" cx="700" cy="-13" r="6" />
+                        <circle id="Oval-3_4_" class="st28" cx="1351" cy="-459" r="6" />
+                        <circle id="Oval-3_5_" class="st28" cx="1200" cy="-531" r="6" />
+                        <circle id="Oval-3_6_" class="st28" cx="953" cy="-528" r="6" />
+                        <circle id="Oval-3_7_" class="st28" cx="866" cy="-275" r="6" />
+                        <circle id="Oval-3-Copy-2" class="st28" cx="841" cy="157" r="6" />
+                        <circle id="Oval-3-Copy-3" class="st28" cx="1704" cy="450" r="6" />
+                        <circle id="Oval-3-Copy-5" class="st28" cx="1318" cy="708" r="6" />
+                        <circle id="Oval-3-Copy-4" class="st28" cx="1985" cy="111" r="6" />
+                        <circle id="Oval-3-Copy" class="st28" cx="1588" cy="25" r="6" />
+                        <circle id="Oval-3-Copy-9" class="st28" cx="1536" cy="214" r="6" />
+                        <circle id="Oval-3-Copy-6" class="st28" cx="1203" cy="371" r="6" />
+                        <circle id="Oval-3_8_" class="st28" cx="1847" cy="-421" r="6" />
+                        <circle id="Oval-3-Copy-8" class="st28" cx="1918" cy="-197" r="6" />
+                        <g id="Group-3" transform="translate(117, 243)">
+                            <circle id="Oval-3_9_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_10_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3_1_" transform="translate(403, 403)">
+                            <circle id="Oval-3_11_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_12_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy" transform="translate(571, 743)">
+                            <circle id="Oval-3_13_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_14_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3_2_" transform="translate(948, 297)">
+                            <circle id="Oval-3_15_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_16_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy-2" transform="translate(1135, 988)">
+                            <circle id="Oval-3_17_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_18_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy-5" transform="translate(1356, 651)">
+                            <circle id="Oval-3_19_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_20_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy-4" transform="translate(1123, 1279)">
+                            <circle id="Oval-3_21_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_22_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy-3" transform="translate(296, 1117)">
+                            <circle id="Oval-3_23_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_24_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3-Copy-6" transform="translate(125, 1124)">
+                            <circle id="Oval-3_25_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_26_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <g id="Group-3_3_" transform="translate(776, 0)">
+                            <circle id="Oval-3_27_" class="st29" cx="706" cy="-682" r="12" />
+                            <circle id="Oval-3_28_" class="st28" cx="706" cy="-682" r="6" />
+                        </g>
+                        <circle id="Oval-3_29_" class="st28" cx="2017" cy="-335" r="6" />
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+</script>
+<script type="text/html" id="progress-svg">
+    <svg viewBox="704 -434 1440 900" class="progress-line">
+        <filter height="158.0%" width="169.0%" id="filter-7" filterUnits="objectBoundingBox" y="-19.0%" x="-34.5%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="5" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="4" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.178781703 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter height="158.0%" width="169.0%" id="filter-6" filterUnits="objectBoundingBox" y="-19.0%" x="-34.5%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="5" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="4" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.178781703 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter height="158.0%" width="169.0%" id="filter-5" filterUnits="objectBoundingBox" y="-19.0%" x="-34.5%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="5" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="4" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.178781703 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter height="156.0%" width="166.7%" id="filter-4" filterUnits="objectBoundingBox" y="-20.0%" x="-33.3%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="4" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="4" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.13 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter height="156.0%" width="166.7%" id="filter-3" filterUnits="objectBoundingBox" y="-20.0%" x="-33.3%">
+            <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="4" dx="0"></feOffset>
+            <feGaussianBlur stdDeviation="4" result="shadowBlurOuter1" in="shadowOffsetOuter1"></feGaussianBlur>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.18 0" result="shadowMatrixOuter1" in="shadowBlurOuter1">
+            </feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <g id="front-line">
+            <g id="Desktop-HD">
+                <g id="Roadmap" transform="translate(-8.000000, 230.000000)">
+                    <g id="Group" transform="translate(0.000000, 113.000000)">
+                        <g id="status">
+                            <g>
+                                <path id="path-1" class="st0" d="M704-32C774-10.7,831.3-1,876-3.1c67-3.1,121-45,160-59c39-14,53-6,90-22s45-36,82-47
+							s58-7,88-20s65-55,121-62s48-9,76-26s44-25,70-29s54,4,72,0s42-16,79-33s57-18,103-17s74-15,100-36s52-38,92-40s54,1,75-5
+							s59-21,75-35" />
+                            </g>
+                        </g>
+                    </g>
+                    <g id="Block-light" transform="translate(248.000000, 488.000000)" class="cube">
+                        <polygon id="Rectangle-6_17_" class="top" points="725,-434 746,-422 725,-410 704,-422 				" />
+                        <polygon id="Rectangle-6_16_" class="left" points="704,-422 725,-410 725,-384 704,-397 				" />
+                        <polygon id="Rectangle-6_15_" class="right" points="725,-410 746,-422 746,-397 725,-384 				" />
+                    </g>
+                    <g id="Block-light_1_" transform="translate(478.000000, 395.000000)" class="cube">
+                        <polygon id="Rectangle-6_17_" class="top" points="725,-434 746,-422 725,-410 704,-422 				" />
+                        <polygon id="Rectangle-6_16_" class="left" points="704,-422 725,-410 725,-384 704,-397 				" />
+                        <polygon id="Rectangle-6_15_" class="right" points="725,-410 746,-422 746,-397 725,-384 				" />
+                    </g>
+                    <g id="Block-light_2_" transform="translate(707.000000, 306.000000)" class="cube">
+                        <polygon id="Rectangle-6_17_" class="top" points="725,-434 746,-422 725,-410 704,-422 				" />
+                        <polygon id="Rectangle-6_16_" class="left" points="704,-422 725,-410 725,-384 704,-397 				" />
+                        <polygon id="Rectangle-6_15_" class="right" points="725,-410 746,-422 746,-397 725,-384 				" />
+                    </g>
+                    <g id="Block-gray" transform="translate(937.000000, 249.000000)" class="cube">
+                        <polygon id="Rectangle-6_17_" class="top" points="725,-434 746,-422 725,-410 704,-422 				" />
+                        <polygon id="Rectangle-6_16_" class="left" points="704,-422 725,-410 725,-384 704,-397 				" />
+                        <polygon id="Rectangle-6_15_" class="right" points="725,-410 746,-422 746,-397 725,-384 				" />
+                    </g>
+                    <g id="Block-gray_1_" transform="translate(1166.000000, 184.000000)" class="cube">
+                        <polygon id="Rectangle-6_17_" class="top" points="725,-434 746,-422 725,-410 704,-422 				" />
+                        <polygon id="Rectangle-6_16_" class="left" points="704,-422 725,-410 725,-384 704,-397 				" />
+                        <polygon id="Rectangle-6_15_" class="right" points="725,-410 746,-422 746,-397 725,-384 				" />
+                    </g>
+                    <text transform="matrix(1 0 0 1 1602.8643 -2)" class="st12 st13 st14">201</text>
+                    <text transform="matrix(1 0 0 1 1636.9399 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1636.9313 -2)" class="st12 st13 st14">8</text>
+                    <text transform="matrix(1 0 0 1 1648.2502 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1648.2473 -2)" class="st12 st15 st14">年</text>
+                    <text transform="matrix(1 0 0 1 1663.2494 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1667.9994 -2)" class="st12 st13 st14">5</text>
+                    <text transform="matrix(1 0 0 1 1679.3184 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1679.3154 -2)" class="st12 st15 st14">月</text>
+                    <text transform="matrix(1 0 0 1 1694.3176 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1699.0676 -2)" class="st12 st13 st14">1</text>
+                    <text transform="matrix(1 0 0 1 1710.3865 -2)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1710.3837 -2)" class="st12 st15 st14">日</text>
+                    <text transform="matrix(1 0 0 1 1134.2062 129)" class="st12 st13 st14">201</text>
+                    <text transform="matrix(1 0 0 1 1168.2819 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1168.2732 129)" class="st12 st13 st14">8</text>
+                    <text transform="matrix(1 0 0 1 1179.5922 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1179.5894 129)" class="st12 st15 st14">年</text>
+                    <text transform="matrix(1 0 0 1 1194.5913 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1199.3413 129)" class="st12 st13 st14">3</text>
+                    <text transform="matrix(1 0 0 1 1210.6604 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1210.6575 129)" class="st12 st15 st14">月</text>
+                    <text transform="matrix(1 0 0 1 1225.6595 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1230.4095 129)" class="st12 st13 st14">15</text>
+                    <text transform="matrix(1 0 0 1 1253.0475 129)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1253.0417 129)" class="st12 st15 st14">日</text>
+                    <g id="arrow-label" transform="translate(180.000000, 304.000000)">
+                        <rect id="Rectangle-10" x="704" y="-434" class="st16" width="179" height="82" />
+                        <path id="Combined-Shape" class="st17" d="M812-297l-19,15l-19-15h-70v-55h179v55H812z" />
+                    </g>
+                    <g id="arrow-label-copy" transform="translate(638.000000, 122.000000)">
+                        <rect id="Rectangle-10_1_" x="704" y="-434" class="st16" width="179" height="82" />
+                        <path id="Combined-Shape_1_" class="st17" d="M812-297l-19,15l-19-15h-70v-55h179v55H812z" />
+                    </g>
+                    <g id="arrow-label-copy-2" transform="translate(1098.000000, 0.000000)">
+                        <rect id="Rectangle-10_2_" x="704" y="-434" class="st16" width="179" height="82" />
+                        <path id="Combined-Shape_2_" class="st17" d="M812-297l-19,15l-19-15h-70v-55h179v55H812z" />
+                    </g>
+                    <text transform="matrix(1 0 0 1 909.4661 -17)" class="st12 st13 st14">201</text>
+                    <text transform="matrix(1 0 0 1 943.5417 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 943.5331 -17)" class="st12 st13 st14">8</text>
+                    <text transform="matrix(1 0 0 1 954.9848 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 954.9819 -17)" class="st12 st15 st14">年</text>
+                    <text transform="matrix(1 0 0 1 970.1167 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 974.8667 -17)" class="st12 st13 st14">3</text>
+                    <text transform="matrix(1 0 0 1 986.3184 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 986.3155 -17)" class="st12 st15 st14">月</text>
+                    <text transform="matrix(1 0 0 1 1001.4503 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1006.2003 -17)" class="st12 st13 st14">5</text>
+                    <text transform="matrix(1 0 0 1 1017.652 -17)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1017.6491 -17)" class="st12 st15 st14">日</text>
+                    <text transform="matrix(1 0 0 1 1367.5127 -199)" class="st12 st13 st14">2018</text>
+                    <text transform="matrix(1 0 0 1 1412.9469 -199)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1412.9353 -199)" class="st12 st15 st14">年</text>
+                    <text transform="matrix(1 0 0 1 1428.0701 -199)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1432.8201 -199)" class="st12 st13 st14">4</text>
+                    <text transform="matrix(1 0 0 1 1444.2719 -199)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1444.2689 -199)" class="st12 st15 st14">月</text>
+                    <text transform="matrix(1 0 0 1 1459.4038 -199)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1464.1538 -199)" class="st12 st13 st14">1</text>
+                    <text transform="matrix(1 0 0 1 1475.6055 -199)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1475.6025 -199)" class="st12 st15 st14">日</text>
+                    <text transform="matrix(1 0 0 1 1822.1864 -321)" class="st12 st13 st14">2018</text>
+                    <text transform="matrix(1 0 0 1 1867.6206 -321)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1867.6091 -321)" class="st12 st15 st14">年</text>
+                    <text transform="matrix(1 0 0 1 1882.6112 -321)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1887.3612 -321)" class="st12 st13 st14">5</text>
+                    <text transform="matrix(1 0 0 1 1898.6802 -321)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1898.6772 -321)" class="st12 st15 st14">月</text>
+                    <text transform="matrix(1 0 0 1 1913.6793 -321)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1918.4293 -321)" class="st12 st13 st14">30</text>
+                    <text transform="matrix(1 0 0 1 1941.0673 -321)" class="st12 st13 st14"> </text>
+                    <text transform="matrix(1 0 0 1 1941.0615 -321)" class="st12 st15 st14">日</text>
+                    <text transform="matrix(1 0 0 1 1630.0176 -57)" class="st18">
+                        <tspan x="0" y="0" class="st12 st15 st19">应用</tspan>
+                        <tspan x="27.7" y="0" class="st12 st13 st19">Beta</tspan>
+                        <tspan x="57.9" y="0" class="st12 st15 st19">版</tspan>
+                    </text>
+                    <text transform="matrix(1 0 0 1 1692.0769 -57)" class="st12 st13 st19"> </text>
+                    <text transform="matrix(1 0 0 1 1652.6333 -39)" class="st12 st15 st19">测试</text>
+                    <text transform="matrix(1 0 0 1 1175.2666 89)" class="st12 st15 st19">网站上线</text>
+                    <text transform="matrix(1 0 0 1 960.33 -92)" class="st12 st13 st19">DEE</text>
+                    <text transform="matrix(1 0 0 1 989.66 -92)" class="st12 st13 st19"> </text>
+                    <text transform="matrix(1 0 0 1 946.7667 -74)" class="st12 st15 st19">项目成立</text>
+                    <text transform="matrix(1 0 0 1 1403.7666 -274)" class="st12 st15 st19">平台设计</text>
+                    <text transform="matrix(1 0 0 1 1446.2334 -274)" class="st12 st13 st19"> </text>
+                    <text transform="matrix(1 0 0 1 1417.6333 -256)" class="st12 st15 st19">开发</text>
+                    <text transform="matrix(1 0 0 1 1863.7667 -396)" class="st12 st15 st19">应用对外</text>
+                    <text transform="matrix(1 0 0 1 1906.2334 -396)" class="st12 st13 st19"> </text>
+                    <text transform="matrix(1 0 0 1 1877.6333 -378)" class="st12 st15 st19">公布</text>
+                </g>
+            </g>
+        </g>
+    </svg>
+</script>
+<script type="text/html" id="progress-cube">
+    <svg viewBox="14 -14 42 50.5" class="cube">
+        <polygon id="Rectangle-6" class="st0" points="35,-13.8 56,-1.8 35,10.3 14,-1.8 " />
+        <polygon id="Rectangle-6_1_" class="st1" points="14,-1.8 35,10.3 35,36.3 14,23.3 " />
+        <polygon id="Rectangle-6_2_" class="st2" points="35,10.3 56,-1.8 56,23.3 35,36.3 " />
+    </svg>
+</script>
+<script type="text/html" id="team-icon">
+    <svg viewBox="16 0 64 32" class="drag_icon">
+        <circle id="Oval" class="st0" cx="47.5" cy="16" r="16" />
+        <circle id="Oval_1_" class="st1" cx="47.5" cy="16" r="8" />
+        <polygon id="Triangle-3" class="st0" points="80,17 72,23.5 72,10.5 " />
+        <polygon id="Triangle-3-Copy" class="st0" points="16,17 24,23.5 24,10.5 " />
+    </svg>
+</script>
+<script type="text/html" id="contact-bg">
+    <svg viewBox="1149 -948 2329 1928" class="contact-svg">
+        <polygon id="Rectangle-8" class="st0" points="2200,-358.1 2401,-463 2437,-385 2230.8,-124.8 " />
+        <polygon id="Rectangle-8_1_" class="st1" points="2200,-358.1 2399,-461 2425,-647 2090,-515 " />
+        <polygon id="Rectangle-8_2_" class="st2" points="2097,-698 2352,-813 2425,-647 2090,-515 " />
+        <polygon id="Rectangle-8_3_" class="st3" points="2470.3,-132.5 2501.1,-292.7 2437,-385 2230.8,-124.8 " />
+        <polygon id="Rectangle-8_4_" class="st4" points="2470.3,-132.5 2501.1,-292.7 2636.9,-250.4 2553.6,-132.5 " />
+        <polygon id="Rectangle-8_5_" class="st3" points="2636.9,-30 2739.4,-91.5 2739.4,-267.1 2636.9,-250.4 2553.6,-132.5 " />
+        <polygon id="Rectangle-8_6_" class="st5" points="2558.8,372.4 2777.8,410.8 2777.8,236.6 2660,223.7 " />
+        <polygon id="Rectangle-8_7_" class="st1" points="2558.8,372.4 2777.8,410.8 2789,656 2490,590 " />
+        <polygon id="Rectangle-8_8_" class="st6" points="2490,803 2716,856 2789,656 2490,590 " />
+        <polygon id="Rectangle-8_9_" class="st0" points="2873.9,-28.7 2739.4,-91.5 2739.4,-265.8 2873.9,-363.2 3029,-329.9 3057.2,-97.9 
+	" />
+        <polygon id="Rectangle-8_10_" class="st7" points="2857,-541 2873.9,-363.2 3029,-329.9 3164,-441 " />
+        <polygon id="Rectangle-8_11_" class="st8" points="2857,-541 2907,-673 3345,-625 3164,-441 " />
+        <polygon id="Rectangle-8_12_" class="st1" points="3084,-822 2907,-673 3345,-625 3387,-799 " />
+        <polygon id="Rectangle-8_13_" class="st9" points="2636.9,-30 2739.4,-91.5 2875.2,-30 2777.8,236.6 2660,223.7 " />
+        <path id="Rectangle-8-Copy" class="st10" d="M2496.3-461.4l-72.7,164.5l141.6,82.9l107.1-65.1v-137.7L2496.3-461.4z" />
+        <path id="Rectangle-8-Copy_1_" class="st10" d="M2729.8-191.8l-58.4-87.6l-106.8,64.9l39.3,92.6L2729.8-191.8z" />
+        <path id="Rectangle-8-Copy_2_" class="st10" d="M2730.5-192.3l-126.3,70.2l15.3,204.3l129.9,7.6l100.9-221L2730.5-192.3z" />
+        <polyline id="Path-25" class="st10" points="2749.7,90.3 2845.8,259.5 2619,390.2 2516.5,296.7 2619,80.1 " />
+        <path id="Path-26" class="st10" d="M2845.8,259.5l189.3,76.3" />
+        <path id="Path-27" class="st10" d="M2849.6-131.4L3105.9-239" />
+        <polyline id="Path-2" class="st11" points="2496,-462 2476,-605 2244,-358 2426,-297 " />
+        <path id="Path-3" class="st11" d="M2475-605c0,0-33-36.7-99-110l-162,110l30,247" />
+        <polyline id="Path-4" class="st11" points="2731,-190 2764,-326 3106,-239 " />
+        <polyline id="Path-5" class="st11" points="2764,-326 2832,-432 3009,-440 3106,-239 " />
+        <polyline id="Path-6" class="st11" points="2832,-432 2766,-582 3023,-595 3010,-440 " />
+        <polyline id="Path-7" class="st11" points="2767,-582 2873,-755 3158,-739 3023,-594 " />
+        <polyline id="Path-8" class="st11" points="2620,392 2641,655 3036,335 " />
+        <path id="Path-9" class="st11" d="M2642,656c0,0,100.3,36.7,301,110l141-118l-48-312" />
+        <ellipse id="Oval-3" class="st12" cx="2619" cy="81.4" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy" class="st12" cx="2850.1" cy="-131.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-7" class="st12" cx="2764.1" cy="-324.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-9" class="st12" cx="2243.1" cy="-359.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-10" class="st12" cx="2374.1" cy="-713.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-8" class="st12" cx="3009.1" cy="-440.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-11" class="st12" cx="3023.1" cy="-595.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-2" class="st12" cx="2729.2" cy="-192.9" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-3" class="st12" cx="2562.6" cy="-215.9" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-4" class="st12" cx="2673.1" cy="-278.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-12" class="st12" cx="2673.1" cy="-415.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-13" class="st12" cx="2830.1" cy="-430.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-14" class="st12" cx="2873.1" cy="-754.8" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-5" class="st12" cx="2844.1" cy="259.2" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-15" class="st12" cx="3036.1" cy="336.2" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-16" class="st12" cx="2641.1" cy="654.2" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-17" class="st12" cx="2943.1" cy="766.2" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3-Copy-6" class="st12" cx="2515.2" cy="298" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_1_" class="st13" cx="2603.6" cy="-123.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_2_" class="st12" cx="2603.6" cy="-123.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_3_" class="st13" cx="2749.3" cy="89.3" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_4_" class="st12" cx="2749.3" cy="89.3" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_5_" class="st13" cx="2621.3" cy="389.3" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_6_" class="st12" cx="2621.3" cy="389.3" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_7_" class="st13" cx="3084.3" cy="648.3" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_8_" class="st12" cx="3084.3" cy="648.3" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_9_" class="st13" cx="3106.3" cy="-239.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_10_" class="st12" cx="3106.3" cy="-239.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_11_" class="st13" cx="2769.3" cy="-581.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_12_" class="st12" cx="2769.3" cy="-581.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_13_" class="st13" cx="2476.3" cy="-602.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_14_" class="st12" cx="2476.3" cy="-602.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_15_" class="st13" cx="2212.3" cy="-602.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_16_" class="st12" cx="2212.3" cy="-602.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_17_" class="st13" cx="2424.3" cy="-296.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_18_" class="st12" cx="2424.3" cy="-296.7" rx="5.1" ry="5.1" />
+        <ellipse id="Oval-3_19_" class="st13" cx="3157.3" cy="-738.7" rx="10.3" ry="10.3" />
+        <ellipse id="Oval-3_20_" class="st12" cx="3157.3" cy="-738.7" rx="5.1" ry="5.1" />
+    </svg>
+</script>
+<script type="text/html" id="home-bar-icon">
+    <svg viewBox="0 0 20 14" class="icon com">
+        <g id="DEE_Landing-CN" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1412.000000, -289.000000)">
+            <g id="platform" transform="translate(1412.000000, 289.000000)">
+                <path d="M4,0 L16,0 C17.1045695,-2.02906125e-16 18,0.8954305 18,2 L18,13 L2,13 L2,2 C2,0.8954305 2.8954305,2.02906125e-16 4,0 Z" id="Rectangle-34" fill="#FFFFFF"></path>
+                <rect id="Rectangle-35" fill="#DADADA" x="3" y="2" width="14" height="9"></rect>
+                <path d="M0,12 L20,12 L20,12 C20,13.1045695 19.1045695,14 18,14 L2,14 C0.8954305,14 1.3527075e-16,13.1045695 0,12 Z" id="Rectangle-36" fill="#FFFFFF"></path>
+                <polyline id="Path-66" stroke="#37309C" stroke-linecap="round" points="6 9 7 7 9 8 11 5 13 6.5 15 4"></polyline>
+            </g>
+        </g>
+    </svg>
+</script>
+<script type="text/html" id="open">
+    <div class="open-wrapper">
+        <div class="logo" id="logo">
+            <svg viewBox="117 -15 42 49" class="stk">
+                <polygon id="Rectangle-5" class="st0" points="118,-2.3 138,8.7 138,31.7 118,20.7 " />
+                <polygon id="Rectangle-5_1_" class="st1" points="123,5.7 138,13.7 138,17.7 123,9.7 " />
+                <polygon id="Rectangle-5-Copy" class="st1" points="123,14.7 138,22.7 138,26.7 123,18.7 " />
+                <polygon id="Rectangle-5_2_" class="st2" points="118,-2.3 138,-14.3 158,-2.3 138,8.7 " />
+                <polygon id="Rectangle-5_3_" class="st0" points="127,-2.8 138.5,-9.3 150,-2.8 138.5,3.7 " />
+                <polygon id="Rectangle-5_4_" class="st1" points="138.5,-9.3 150,-2.8 138.5,3.7 " />
+                <polygon id="Combined-Shape" class="st1" points="158,-2.3 138,8.7 138,31.7 158,20.7 " />
+                <polygon id="Rectangle-5_5_" class="st3" points="158,3.2 138,13.7 138,17.7 158,7.2 " />
+                <polygon id="Rectangle-5-Copy_1_" class="st3" points="158,12.2 138,22.7 138,26.7 158,16.2 " />
+                <polygon id="Rectangle-5_6_" class="st3" points="123,5.7 126.2,7.4 123,9.7 " />
+                <polygon id="Rectangle-5-Copy-2" class="st3" points="123,14.7 126.2,16.4 123,18.7 " />
+            </svg>
+        </div>
+        <div class="inner">
+            <div class="css-pie" id="sectorPie">
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="shadow"></div>
+            </div>
+            <div class="th-pie" id="thPie">
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+                <div class="pie">
+                    <svg viewBox="0 0 32 32">
+                        <circle r="16" cx="16" cy="16" stroke-dasharray="0 100"></circle>
+                    </svg>
+                </div>
+            </div>
+            <div class="css-hexagon" id="sectorHexagon">
+                <div class="hexagon">
+                    <svg viewBox="0 0 32 32">
+                        <polygon class="st" points="8.3,29.5 0.7,16 8.3,2.5 23.6,2.5 31.3,16 23.6,29.5" />
+                    </svg>
+                </div>
+                <div class="hexagon">
+                    <svg viewBox="0 0 32 32">
+                        <polygon class="st" points="8.3,29.5 0.7,16 8.3,2.5 23.6,2.5 31.3,16 23.6,29.5" />
+                    </svg>
+                </div>
+                <div class="hexagon">
+                    <svg viewBox="0 0 32 32">
+                        <polygon class="st" points="8.3,29.5 0.7,16 8.3,2.5 23.6,2.5 31.3,16 23.6,29.5" />
+                    </svg>
+                </div>
+            </div>
+            <div id="line"></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="mouse-svg">
+    <svg id="mouse" viewBox="-4 -4 23 41">
+        <path id="Combined-Shape" class="st0" d="M-3.9,6C-3.2,0.4,1.7-4,7.5-4S18.2,0.4,18.9,6H19v20h0c-0.3,6.1-5.3,11-11.5,11
+	S-3.7,32.1-4,26h0L-3.9,6L-3.9,6z" />
+        <path id="Combined-Shape_1_" class="st1" d="M6.1,5C6,4.8,6,4.7,6,4.5C6,3.7,6.7,3,7.5,3S9,3.7,9,4.5C9,4.7,9,4.8,8.9,5H9v3H8.9
+	C8.7,8.6,8.2,9,7.5,9S6.3,8.6,6.1,8H6L6.1,5L6.1,5z" />
+    </svg>
+</script>
+</div>
+    <script src="bower/webcomponents-lite.js" type="text/javascript"></script>
+    <script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-shim.min.js"></script>
+    <script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-sham.min.js"></script>
+    <script src="js/core.js" type="text/javascript"></script>
+    <script src="js/html-import.js" type="text/javascript"></script>
+    
+<!--     <script src="js/pace.min.js"></script> -->
+
+    <script src='js/jquery.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script src="js/template-web.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="js/anime.min.js" type="text/javascript"></script>
+    <script src="js/anime.js" type="text/javascript"></script>
+    <script src="js/lang.js" type="text/javascript"></script>
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

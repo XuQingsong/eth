@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220px" height="220px" viewBox="0 0 220 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    <title>Trade</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="27 42.8456376 99.5 0 172 42.8456376 172 126.281879 100.632812 168 27 126.281879"></polygon>
+        <filter x="-34.5%" y="-23.8%" width="169.0%" height="159.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.274509804   0 0 0 0 0.243137255   0 0 0 0 0.764705882  0 0 0 0.441547781 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-89.1%" y="-45.6%" width="278.2%" height="208.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.239215686   0 0 0 0 0.11372549   0 0 0 0 0.556862745  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Trade">
+            <g id="trade-icon" transform="translate(14.000000, 20.000000)">
+                <g id="icon-bg">
+                    <g id="Path-30">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <polygon id="Path-30-Copy" fill="#B6A4E2" style="mix-blend-mode: multiply;" opacity="0.458956069" points="79 43.2885906 125.5 16 172 43.2885906 172 96.4295302 126.226562 123 79 96.4295302"></polygon>
+                    <polygon id="Path-30" fill="#B6A4E2" points="54 58.2885906 100.5 31 147 58.2885906 147 111.42953 101.226563 138 54 111.42953"></polygon>
+                    <polygon id="Path-30-Copy" fill="#B6A4E2" style="mix-blend-mode: multiply;" opacity="0.458956069" points="8 85.2885906 54.5 58 101 85.2885906 101 138.42953 55.2265625 165 8 138.42953"></polygon>
+                    <polygon id="Path-30-Copy" stroke="#9E89D6" points="0 21.7516779 21.5 9 43 21.7516779 43 46.5838926 21.8359375 59 0 46.5838926"></polygon>
+                    <polygon id="Path-30-Copy" stroke="#D1BFFF" points="38 103.181208 54 94 70 103.181208 70 121.060403 54.25 130 38 121.060403"></polygon>
+                    <polygon id="Path-30-Copy" stroke="#D1BFFF" points="130 67.1812081 146 58 162 67.1812081 162 85.0604027 146.25 94 130 85.0604027"></polygon>
+                    <polygon id="Path-30-Copy" stroke="#D1BFFF" points="69 13.1812081 85 4 101 13.1812081 101 31.0604027 85.25 40 69 31.0604027"></polygon>
+                    <polygon id="Path-30-Copy-2" stroke="#9E89D6" opacity="0.681782156" points="141 115.04698 166.5 100 192 115.04698 192 144.348993 166.898438 159 141 144.348993"></polygon>
+                </g>
+                <g id="ethereum" filter="url(#filter-3)" transform="translate(74.000000, 38.000000)" fill-rule="nonzero">
+                    <polygon id="Shape" fill="#DBCEFF" points="27.5985148 0 27 2.04543718 27 61.3992874 27.5985148 62 55 45.7144445"></polygon>
+                    <polygon id="Shape" fill="#FFFFFF" points="27 0 0 45.7142857 27 62 27 33.1915168"></polygon>
+                    <polygon id="Shape" fill="#BCA4F3" points="27.3402436 67.3509317 27 67.7661934 27 89.0048858 27.3402436 90 55 51"></polygon>
+                    <polygon id="Shape" fill="#DBCEFF" points="27 90 27 67.3509317 0 51"></polygon>
+                    <polygon id="Shape" fill="#BCA4F3" points="27 62 54 45.6062078 27 33"></polygon>
+                    <polygon id="Shape" fill="#DBCEFF" points="0 45.6062078 27 62 27 33"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
